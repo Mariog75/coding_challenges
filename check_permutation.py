@@ -1,3 +1,4 @@
+#O(n^2)
 def checkpermutation ( str1, str2 ):
     if(len(str1) != len(str2)):
         return 0
@@ -12,10 +13,17 @@ def checkpermutation ( str1, str2 ):
             else:
                 result = 0
     return 1
+#O(nlogn) (Depending on sorting algorithm used)
+def checkpermutationbetter ( str1, str2 ):
+    if(len(str1) != len(str2)):
+        return 0
+    s1 = sorted(str1)
+    s2 = sorted(str2)
 
-
-def main():
-    print(checkpermutation( "badab", "daba" ))
+    for i in range(0, len(str1), 1):
+        if(s1[i] != s2[i]):
+            return 0
+    return 1
 
 if __name__ == "__main__":
-    main()
+    print(checkpermutationbetter("blah", "hgab"))
